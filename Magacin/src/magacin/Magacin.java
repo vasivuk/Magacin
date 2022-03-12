@@ -10,20 +10,36 @@ public class Magacin implements MagacinInterfejs{
 	List<Artikal> artikli = new LinkedList<Artikal>();
 
 	@Override
-	public void dodajArtikal(Artikal artikal) {
-		// TODO Auto-generated method stub
-		
+	public void dodajArtikal(Artikal noviArtikal) {
+		for (Artikal a : artikli) {
+			if(a.equals(noviArtikal)) {
+				a.setKolicina(a.getKolicina()+1);
+				return;
+			}
+		}
+		artikli.add(noviArtikal);
 	}
 
 	@Override
 	public Artikal izbaciArtikal(Artikal artikal) {
-		// TODO Auto-generated method stub
-		return null;
+		Artikal izbaceniArtikal;
+		for (Artikal a : artikli) {
+			if(a.equals(artikal)) {
+				izbaceniArtikal = a;
+				artikli.remove(a);
+				return izbaceniArtikal;
+			}
+		}
+		throw new NullPointerException("Artikal ne postoji u magacinu!");
 	}
 
 	@Override
 	public Artikal pronadjiArtikal(long sifra) {
-		// TODO Auto-generated method stub
-		return null;
+		for (Artikal artikal : artikli) {
+			if(artikal.getSifra() == sifra) {
+				return artikal;
+			}
+		}
+		throw new NullPointerException("Artikal ne postoji u magacinu!");
 	}
 }
