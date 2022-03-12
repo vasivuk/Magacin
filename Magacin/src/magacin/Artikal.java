@@ -11,24 +11,36 @@ public abstract class Artikal {
 		return naziv;
 	}
 	public void setNaziv(String naziv) {
+		if(naziv == null || naziv.equals("")) {
+			throw new NullPointerException("Naziv ne sme biti prazan");
+		}
 		this.naziv = naziv;
 	}
 	public long getSifra() {
 		return sifra;
 	}
 	public void setSifra(long sifra) {
+		if(sifra <= 0) {
+			throw new IllegalArgumentException("Sifra mora biti veca od 0");
+		}
 		this.sifra = sifra;
 	}
 	public String getOpis() {
 		return opis;
 	}
 	public void setOpis(String opis) {
+		if(opis == null || opis.equals("")) {
+			throw new IllegalArgumentException("Opis ne sme biti prazan");
+		}
 		this.opis = opis;
 	}
 	public int getKolicina() {
 		return kolicina;
 	}
 	public void setKolicina(int kolicina) {
+		if(kolicina < 0) {
+			throw new IllegalArgumentException("Kolicina ne sme biti manja od 0");
+		}
 		this.kolicina = kolicina;
 	}
 	@Override

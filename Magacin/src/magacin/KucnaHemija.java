@@ -10,6 +10,9 @@ public class KucnaHemija extends Artikal{
 	}
 	
 	public void setRokTrajanja(Date rokTrajanja) {
+		if(rokTrajanja == null || rokTrajanja.before(new Date())) {
+			throw new IllegalArgumentException("Rok trajanja ne sme biti null, i mora biti nakon danasnjeg datuma");
+		}
 		this.rokTrajanja = rokTrajanja;
 	}
 	
