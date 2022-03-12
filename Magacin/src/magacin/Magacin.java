@@ -11,8 +11,13 @@ public class Magacin implements MagacinInterfejs{
 
 	@Override
 	public void dodajArtikal(Artikal artikal) {
-		// TODO Auto-generated method stub
-		
+		for (Artikal a : artikli) {
+			if(a.getSifra() == artikal.getSifra()) {
+				a.setKolicina(a.getKolicina()+1);
+				return;
+			}
+		}
+		artikli.add(artikal);
 	}
 
 	@Override
